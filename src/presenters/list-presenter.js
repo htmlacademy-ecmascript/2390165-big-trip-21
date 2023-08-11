@@ -12,7 +12,6 @@ class ListPresenter extends Presenter {
    */
   constructor(...rest) {
     super(...rest);
-
     // this.view.addEventListener('change', this.onViewChange.bind(this));
   }
 
