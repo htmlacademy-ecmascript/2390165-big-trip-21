@@ -1,7 +1,7 @@
 # Проект «Большое путешествие»
 
 * Студент: [Alexandr Poidich](https://up.htmlacademy.ru/ecmascript/21/user/2390165).
-* Наставник: [Alexandr Konotop]
+* Наставник: `[Alexandr Konotop]`
     (https://htmlacademy.ru/profile/sineway).
 
 ---
