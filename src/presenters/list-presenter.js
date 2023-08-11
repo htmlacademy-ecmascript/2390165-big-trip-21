@@ -49,7 +49,7 @@ class ListPresenter extends Presenter {
         })),
 
         isFavorite: point.isFavorite,
-        isEditable: index === 0
+        isEditable: index === 1
       };
     });
     // console.table(items);
