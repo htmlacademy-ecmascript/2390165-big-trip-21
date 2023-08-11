@@ -19,7 +19,9 @@ class ListPresenter extends Presenter {
    * @override
    */
   updateView() {
-    this.view.render();
+    const items = [];
+
+    this.view.setState({items});
   }
 }
 

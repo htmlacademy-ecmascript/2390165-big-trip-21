@@ -1,6 +1,11 @@
 import View from './view.js';
 import {html} from '../utilities.js';
 
+/**
+ * @typedef {import('./list-view').ItemState} State
+ *
+ * @extends {View<State>}
+ */
 class CardView extends View {
   constructor() {
     super();
