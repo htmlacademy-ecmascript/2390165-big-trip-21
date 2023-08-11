@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "checkJs": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "target": "esnext"
+  },
+
+  "typeAcquisition": {
+    "enable": true
+  },
+
+  "include": [
+    "src"
+  ],
+
+  "exclude": [
+    "src/framework"
+  ]
+}
