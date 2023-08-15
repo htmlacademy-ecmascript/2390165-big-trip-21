@@ -1,4 +1,7 @@
 import dayjs from 'dayjs';
+import durationPlugin from 'dayjs/plugin/duration.js';
+
+dayjs.extend(durationPlugin);
 
 /**
  * @param {dayjs.ConfigType} value
@@ -15,7 +18,27 @@ function formatDate(value) {
 function formatTime(value) {
   return dayjs(value).format('HH:mm');
 }
-// console.log(formatTime('2023-03-18T13:00Z'));
+
+/**
+ * @param {dayjs.ConfigType} valueFrom
+ * @param {dayjs.ConfigType} valueTo
+ * @returns {string}
+ */
+function formatDuration(valueFrom, valueTo) {
+  const ms = dayjs(valueTo).diff(valueFrom);
+  const duration = dayjs.duration(ms);
+
+  if (duration.days()) {
+    return duration.format('DD[d] HH[h] mm[m]');
+  }
+
+  if (duration.hours()) {
+    return duration.format('HH[h] mm[m]');
+  }
+
+  return duration.format('mm[m]');
+}
+
 
 /**
  * @param {TemplateStringsArray} strings
@@ -41,5 +64,6 @@ function html(strings, ...values) {
 export {
   formatDate,
   formatTime,
+  formatDuration,
   html,
 };
