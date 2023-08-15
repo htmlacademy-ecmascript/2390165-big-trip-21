@@ -39,6 +39,13 @@ function formatDuration(valueFrom, valueTo) {
   return duration.format('mm[m]');
 }
 
+/**
+ * @param {number} value
+ * @returns {string}
+ */
+function formatNumber(value) {
+  return value.toLocaleString('en');
+}
 
 /**
  * @param {TemplateStringsArray} strings
@@ -65,5 +72,6 @@ export {
   formatDate,
   formatTime,
   formatDuration,
+  formatNumber,
   html,
 };
