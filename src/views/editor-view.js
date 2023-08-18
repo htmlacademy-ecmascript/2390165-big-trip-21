@@ -14,9 +14,17 @@ class EditorView extends View {
     this.addEventListener('click', this.onClick);
   }
 
+  connectedCallback() {
+    document.addEventListener('keydown', this);
+  }
+
+  disconnectedCallback() {
+    document.removeEventListener('keydown', this);
+  }
+
   /**
-   * @override
-   */
+ * @override
+ */
   createHtml() {
     return html`
       <form class="event event--edit" action="#" method="post">
@@ -264,6 +272,16 @@ class EditorView extends View {
       this.dispatch('close');
     }
   }
+
+  /**
+   * @param {KeyboardEvent} event
+   */
+  handleEvent(event) {
+    if (event.key?.startsWith('Esc')) {
+      this.dispatch('close');
+    }
+  }
+
 }
 
 customElements.define('editor-view', EditorView);
