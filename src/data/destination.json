@@ -1,0 +1,170 @@
+[
+  {
+    "id": "1e2e5223-9446-4646-b3ec-e1907a95f3ba",
+    "description": "Valencia - with an embankment of a mighty river as a centre of attraction",
+    "name": "Valencia",
+    "pictures": []
+  },
+  {
+    "id": "430ed559-03ac-43cd-97af-1ac60623b769",
+    "description": "Hiroshima - is a beautiful city",
+    "name": "Hiroshima",
+    "pictures": [
+      {
+        "src": "https://21.objects.pages.academy/static/destinations/11.jpg",
+        "description": "Hiroshima famous for its crowded street markets with the best street food in Asia"
+      },
+      {
+        "src": "https://21.objects.pages.academy/static/destinations/20.jpg",
+        "description": "Hiroshima with a beautiful old town"
+      },
+      {
+        "src": "https://21.objects.pages.academy/static/destinations/8.jpg",
+        "description": "Hiroshima a perfect place to stay with a family"
+      },
+      {
+        "src": "https://21.objects.pages.academy/static/destinations/6.jpg",
+        "description": "Hiroshima with crowded streets"
+      },
+      {
+        "src": "https://21.objects.pages.academy/static/destinations/11.jpg",
+        "description": "Hiroshima with a beautiful old town"
+      }
+    ]
+  },
+  {
+    "id": "e7d7bec7-6321-43bc-8f30-3d20d74bb2bc",
+    "name": "Sochi"
+  },
+  {
+    "id": "1f8e77e4-b185-45a9-b9da-77dac347a39c",
+    "description": "Amsterdam - middle-eastern paradise",
+    "name": "Amsterdam",
+    "pictures": [
+      {
+        "src": "https://21.objects.pages.academy/static/destinations/13.jpg",
+        "description": "Amsterdam famous for its crowded street markets with the best street food in Asia"
+      },
+      {
+        "src": "https://21.objects.pages.academy/static/destinations/9.jpg",
+        "description": "Amsterdam middle-eastern paradise"
+      },
+      {
+        "src": "https://21.objects.pages.academy/static/destinations/6.jpg",
+        "description": "Amsterdam a perfect place to stay with a family"
+      },
+      {
+        "src": "https://21.objects.pages.academy/static/destinations/17.jpg",
+        "description": "Amsterdam famous for its crowded street markets with the best street food in Asia"
+      }
+    ]
+  },
+  {
+    "id": "8fa3a3fb-8205-4da2-8aaa-954159347305",
+    "description": "Tokio - with crowded streets",
+    "name": "Tokio",
+    "pictures": [
+      {
+        "src": "https://21.objects.pages.academy/static/destinations/11.jpg",
+        "description": "Tokio with an embankment of a mighty river as a centre of attraction"
+      },
+      {
+        "src": "https://21.objects.pages.academy/static/destinations/1.jpg",
+        "description": "Tokio famous for its crowded street markets with the best street food in Asia"
+      },
+      {
+        "src": "https://21.objects.pages.academy/static/destinations/15.jpg",
+        "description": "Tokio for those who value comfort and coziness"
+      }
+    ]
+  },
+  {
+    "id": "5daad181-4871-4c6f-8953-da0360c6471d",
+    "description": "Oslo - for those who value comfort and coziness",
+    "name": "Oslo",
+    "pictures": []
+  },
+  {
+    "id": "f4680965-86bd-4e60-b723-0e81be33a007",
+    "description": "Madrid - full of of cozy canteens where you can try the best coffee in the Middle East",
+    "name": "Madrid",
+    "pictures": [
+      {
+        "src": "https://21.objects.pages.academy/static/destinations/19.jpg",
+        "description": "Madrid a true asian pearl"
+      },
+      {
+        "src": "https://21.objects.pages.academy/static/destinations/18.jpg",
+        "description": "Madrid middle-eastern paradise"
+      },
+      {
+        "src": "https://21.objects.pages.academy/static/destinations/13.jpg",
+        "description": "Madrid full of of cozy canteens where you can try the best coffee in the Middle East"
+      },
+      {
+        "src": "https://21.objects.pages.academy/static/destinations/3.jpg",
+        "description": "Madrid middle-eastern paradise"
+      },
+      {
+        "src": "https://21.objects.pages.academy/static/destinations/14.jpg",
+        "description": "Madrid famous for its crowded street markets with the best street food in Asia"
+      }
+    ]
+  },
+  {
+    "id": "415d5d96-be4d-4473-9c31-a62d2bf3d323",
+    "description": "Chamonix - in a middle of Europe",
+    "name": "Chamonix",
+    "pictures": [
+      {
+        "src": "https://21.objects.pages.academy/static/destinations/8.jpg",
+        "description": "Chamonix famous for its crowded street markets with the best street food in Asia"
+      },
+      {
+        "src": "https://21.objects.pages.academy/static/destinations/11.jpg",
+        "description": "Chamonix is a beautiful city"
+      },
+      {
+        "src": "https://21.objects.pages.academy/static/destinations/5.jpg",
+        "description": "Chamonix full of of cozy canteens where you can try the best coffee in the Middle East"
+      },
+      {
+        "src": "https://21.objects.pages.academy/static/destinations/1.jpg",
+        "description": "Chamonix famous for its crowded street markets with the best street food in Asia"
+      },
+      {
+        "src": "https://21.objects.pages.academy/static/destinations/2.jpg",
+        "description": "Chamonix famous for its crowded street markets with the best street food in Asia"
+      }
+    ]
+  },
+  {
+    "id": "31fd5b9d-de8d-402f-8d15-863cb0d0401b",
+    "description": "Venice - in a middle of Europe",
+    "name": "Venice",
+    "pictures": []
+  },
+  {
+    "id": "9be7169f-ece9-419d-a926-24acc4ead65e",
+    "description": "Berlin - in a middle of Europe",
+    "name": "Berlin",
+    "pictures": [
+      {
+        "src": "https://21.objects.pages.academy/static/destinations/2.jpg",
+        "description": "Berlin with a beautiful old town"
+      },
+      {
+        "src": "https://21.objects.pages.academy/static/destinations/12.jpg",
+        "description": "Berlin famous for its crowded street markets with the best street food in Asia"
+      },
+      {
+        "src": "https://21.objects.pages.academy/static/destinations/3.jpg",
+        "description": "Berlin a true asian pearl"
+      },
+      {
+        "src": "https://21.objects.pages.academy/static/destinations/2.jpg",
+        "description": "Berlin with crowded streets"
+      }
+    ]
+  }
+]
