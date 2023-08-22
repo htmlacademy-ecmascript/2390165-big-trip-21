@@ -27,8 +27,8 @@ class FilterPresenter extends Presenter {
 
     const items = values.map((value) => ({
       value,
-      isSelected: value === 'everything',
-      isDisabled: value === 'future'
+      isSelected: value === 'future',
+      isDisabled: value === 'past'
     }));
 
     this.view.setState({items});

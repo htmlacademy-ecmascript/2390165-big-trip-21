@@ -26,19 +26,20 @@ class FilterView extends View {
    */
   createHtml() {
     return html`
-      ${this.state.items.map(() => html`
+      ${this.state.items.map((item) => html`
         <div class="trip-filters__filter">
           <input
-            id="filter-everything"
+            id="filter-${item.value}"
             class="trip-filters__filter-input  visually-hidden"
             type="radio"
             name="trip-filter"
-            value="everything"
-            checked="">
+            value="${item.value}"
+            ${item.isSelected ? 'checked' : ''}
+            ${item.isDisabled ? 'disabled' : ''}>
           <label
             class="trip-filters__filter-label"
-            for="filter-everything">
-            Everything
+            for="filter-${item.value}">
+            ${item.value}
           </label>
         </div>
       `)}
