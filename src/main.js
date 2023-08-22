@@ -12,6 +12,7 @@ import AddButtonPresenter from './presenters/add-button-presenter.js';
 import SortPresenter from './presenters/sort-presenter.js';
 import ListPresenter from './presenters/list-presenter.js';
 
+
 const appModel = new AppModel();
 
 appModel.ready().then(() => {

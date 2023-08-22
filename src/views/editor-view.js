@@ -11,12 +11,20 @@ class EditorView extends View {
   constructor() {
     super();
 
-    // this.classList.add('class1', 'class2');
+    this.addEventListener('click', this.onClick);
+  }
+
+  connectedCallback() {
+    document.addEventListener('keydown', this);
+  }
+
+  disconnectedCallback() {
+    document.removeEventListener('keydown', this);
   }
 
   /**
-   * @override
-   */
+ * @override
+ */
   createHtml() {
     return html`
       <form class="event event--edit" action="#" method="post">
@@ -253,6 +261,27 @@ class EditorView extends View {
       </section>
     `;
   }
+
+  /**
+   * @param {PointerEvent & {
+   *  target: Element
+   * }} event
+   */
+  onClick(event) {
+    if (event.target.closest('.event__rollup-btn')) {
+      this.dispatch('close');
+    }
+  }
+
+  /**
+   * @param {KeyboardEvent} event
+   */
+  handleEvent(event) {
+    if (event.key?.startsWith('Esc')) {
+      this.dispatch('close');
+    }
+  }
+
 }
 
 customElements.define('editor-view', EditorView);
