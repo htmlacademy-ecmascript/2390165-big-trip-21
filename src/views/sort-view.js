@@ -1,6 +1,19 @@
 import View from './view.js';
 import {html} from '../utilities.js';
 
+/**
+ * @typedef {{
+ *  value: SortType
+ *  isSelected: boolean
+ *  isDisabled: boolean
+ * }} ItemState
+ *
+ * @typedef {{
+ *  items: Array<ItemState>
+ * }} State
+ *
+ * @extends {View<State>}
+ */
 class SortView extends View {
   constructor() {
     super();
