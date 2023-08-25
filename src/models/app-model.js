@@ -63,7 +63,6 @@ class AppModel extends Model {
     const index = this.points.findIndex((point) => point.id === data.id);
 
     this.points.splice(index, 1, data);
-
   }
 
   /**
