@@ -16,6 +16,22 @@ class PointModel extends Model {
     this.offerIds = structuredClone(point.offers);
     this.type = point.type;
   }
+
+  /**
+   * @returns {Point}
+   */
+  toJSON() {
+    return {
+      'id': this.id,
+      'base_price': this.basePrice,
+      'date_from': this.dateFrom,
+      'date_to': this.dateTo,
+      'destination': this.destinationId,
+      'is_favorite': this.isFavorite,
+      'offers': structuredClone(this.offerIds),
+      'type': this.type
+    };
+  }
 }
 
 export default PointModel;
