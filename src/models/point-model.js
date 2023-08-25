@@ -13,7 +13,7 @@ class PointModel extends Model {
     this.dateTo = point.date_to;
     this.destinationId = point.destination;
     this.isFavorite = point.is_favorite;
-    this.offersIds = structuredClone(point.offers);
+    this.offerIds = structuredClone(point.offers);
     this.type = point.type;
   }
 }
