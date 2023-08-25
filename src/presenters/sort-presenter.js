@@ -20,7 +20,18 @@ class SortPresenter extends Presenter {
    * @override
    */
   updateView() {
-    this.view.render();
+    /**
+     * @type {Array<SortType>}
+     */
+    const values = ['day', 'event', 'time', 'price', 'offers'];
+
+    const items = values.map((value) => ({
+      value,
+      isSelected: value === 'time',
+      isDisabled: value === 'event' || value === 'offers'
+    }));
+
+    this.view.setState({items});
   }
 }
 
