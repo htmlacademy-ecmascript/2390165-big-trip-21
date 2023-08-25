@@ -53,6 +53,20 @@ class AppModel extends Model {
   }
 
   /**
+   * @param {PointModel} model
+   * @returns {Promise<void>}
+   */
+  async updatePoint(model) {
+    //TODO Обновить данные на сервере
+
+    const data = model.toJSON();
+    const index = this.points.findIndex((point) => point.id === data.id);
+
+    this.points.splice(index, 1, data);
+
+  }
+
+  /**
    * @returns {Array<Destination>}
    */
   getDestinations() {
