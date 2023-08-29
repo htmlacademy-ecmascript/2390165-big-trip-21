@@ -25,6 +25,20 @@ class PointModel extends Model {
   }
 
   /**
+   * @type {number}
+   */
+  get dateToInMs() {
+    return Date.parse(this.dateTo);
+  }
+
+  /**
+   * @type {number}
+   */
+  get durationInMs() {
+    return this.dateToInMs - this.dateFromInMs;
+  }
+
+  /**
    * @returns {Point}
    */
   toJSON() {
