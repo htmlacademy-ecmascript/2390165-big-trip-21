@@ -29,7 +29,7 @@ class AppModel extends Model {
       day: () => 0,
       event: () => 0,
       time: () => 0,
-      price: () => 0,
+      price: (pointA, pointB) => pointB.basePrice - pointA.basePrice,
       offers: () => 0
     };
 
@@ -47,6 +47,9 @@ class AppModel extends Model {
     this.destinations = destinations;
     // @ts-ignore
     this.offerGroups = offerGroups;
+    console.table(
+      this.getPoints({sort: 'price'})
+    );
   }
 
   /**
