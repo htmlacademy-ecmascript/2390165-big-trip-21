@@ -13,7 +13,7 @@ class SortPresenter extends Presenter {
   constructor(...rest) {
     super(...rest);
 
-    // this.view.addEventListener('change', this.onViewChange.bind(this));
+    this.view.addEventListener('change', this.onViewChange.bind(this));
   }
 
   /**
@@ -33,6 +33,21 @@ class SortPresenter extends Presenter {
     }));
 
     this.view.setState({items});
+  }
+
+  /**
+   * @param {Event & {
+   *  target: HTMLInputElement & {
+   *    value: SortType
+   *  }
+   * }} event
+   */
+  onViewChange(event) {
+    const params = this.navigation.getParams();
+
+    params.sort = event.target.value;
+
+    this.navigation.setParams(params);
   }
 }
 
