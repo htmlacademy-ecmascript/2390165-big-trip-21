@@ -21,6 +21,18 @@ class AppModel extends Model {
      * @type {Array<OfferGroup>}
      */
     this.offerGroups = [];
+
+    /**
+     * @type {Record<SortType, (pointA: PointModel, pointB: PointModel) => number>}
+     */
+    this.sortCallbacks = {
+      day: () => 0,
+      event: () => 0,
+      time: () => 0,
+      price: () => 0,
+      offers: () => 0
+    };
+
   }
 
   /**
@@ -38,10 +50,14 @@ class AppModel extends Model {
   }
 
   /**
+   * @param {{sort?: SortType}} options
    * @returns {Array<PointModel>}
    */
-  getPoints() {
-    return this.points.map(this.createPoint);
+  getPoints(options = {}) {
+    const defaultSort = this.sortCallbacks.day;
+    const sort = this.sortCallbacks[options.sort] ?? defaultSort;
+
+    return this.points.map(this.createPoint).sort(sort);
   }
 
   /**
