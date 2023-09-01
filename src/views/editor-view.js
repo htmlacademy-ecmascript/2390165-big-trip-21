@@ -253,7 +253,7 @@ class EditorView extends View {
 
         <div class="event__photos-container">
           <div class="event__photos-tape">
-            ${selectedDestination.pictures.map((picture) => html`
+            ${selectedDestination.pictures?.map((picture) => html`
               <img class="event__photo" src="${picture.src}" alt="${picture.description}">
             `)}
           </div>
