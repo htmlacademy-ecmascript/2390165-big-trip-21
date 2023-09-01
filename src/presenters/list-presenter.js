@@ -16,6 +16,7 @@ class ListPresenter extends Presenter {
     this.view.addEventListener('open', this.onViewOpen.bind(this));
     this.view.addEventListener('close', this.onViewClose.bind(this));
     this.view.addEventListener('favorite', this.onViewFavorite.bind(this));
+    this.view.addEventListener('edit', this.onViewEdit.bind(this));
   }
 
   /**
@@ -116,6 +117,26 @@ class ListPresenter extends Presenter {
     await this.model.updatePoint(this.createPoint(card.state));
     card.render();
   }
+
+  /**
+   * @param {CustomEvent<HTMLInputElement> & {
+   *  target: import('../views/editor-view').default
+   * }} event
+   */
+  onViewEdit(event) {
+    const editor = event.target;
+    const input = event.detail;
+
+    if (input.name === 'event-type') {
+      editor.state.types.forEach((type) => {
+        type.isSelected = type.value === input.value;
+      });
+
+      editor.render();
+    }
+
+  }
+
 }
 
 export default ListPresenter;
