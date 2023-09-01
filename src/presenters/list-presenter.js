@@ -141,7 +141,17 @@ class ListPresenter extends Presenter {
       });
 
       editor.render();
+      return;
     }
+
+    if (input.name === 'event-destination') {
+      editor.state.destinations.forEach((destination) => {
+        destination.isSelected = destination.name === input.value;
+      });
+
+      editor.render();
+    }
+
 
   }
 
