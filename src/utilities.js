@@ -15,7 +15,9 @@ function createCalendars(inputFrom, inputTo) {
    * @type {import('flatpickr/dist/types/options').Options}
    */
   const options = {
-    dateFormat: 'Z'
+    dateFormat: 'Z',
+    altInput: true,
+    altFormat: 'd/m/y H:i'
   };
 
   const calendarFrom = flatpickr(inputFrom, options);
