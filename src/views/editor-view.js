@@ -12,6 +12,7 @@ class EditorView extends View {
     super();
 
     this.addEventListener('click', this.onClick);
+    this.addEventListener('change', this.onChange);
   }
 
   connectedCallback() {
@@ -253,7 +254,7 @@ class EditorView extends View {
 
         <div class="event__photos-container">
           <div class="event__photos-tape">
-            ${selectedDestination.pictures.map((picture) => html`
+            ${selectedDestination.pictures?.map((picture) => html`
               <img class="event__photo" src="${picture.src}" alt="${picture.description}">
             `)}
           </div>
@@ -280,6 +281,15 @@ class EditorView extends View {
     if (event.key?.startsWith('Esc')) {
       this.dispatch('close');
     }
+  }
+
+  /**
+   * @param {Event & {
+   *  target: HTMLInputElement
+   * }} event
+   */
+  onChange(event) {
+    this.dispatch('edit', event.target);
   }
 
 }
