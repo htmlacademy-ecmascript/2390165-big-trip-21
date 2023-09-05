@@ -11,8 +11,15 @@ dayjs.extend(durationPlugin);
  * @returns {Function}
  */
 function createCalendars(inputFrom, inputTo) {
-  const calendarFrom = flatpickr(inputFrom);
-  const calendarTo = flatpickr(inputTo);
+  /**
+   * @type {import('flatpickr/dist/types/options').Options}
+   */
+  const options = {
+    dateFormat: 'Z'
+  };
+
+  const calendarFrom = flatpickr(inputFrom, options);
+  const calendarTo = flatpickr(inputTo, options);
 
   return () => {
     calendarFrom.destroy();
