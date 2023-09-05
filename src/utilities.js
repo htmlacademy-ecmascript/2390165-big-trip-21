@@ -23,8 +23,13 @@ function createCalendars(inputFrom, inputTo) {
     'time_24hr': true
   };
 
+
   const calendarFrom = flatpickr(inputFrom, options);
   const calendarTo = flatpickr(inputTo, options);
+
+  calendarFrom.set('onChange', ([date]) => calendarTo.set('minDate', date));
+  calendarTo.set('minDate', calendarFrom.selectedDates.at(0));
+
 
   return () => {
     calendarFrom.destroy();
