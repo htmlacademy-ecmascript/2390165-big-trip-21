@@ -1,7 +1,41 @@
+import 'flatpickr/dist/flatpickr.css';
+import flatpickr from 'flatpickr';
 import dayjs from 'dayjs';
 import durationPlugin from 'dayjs/plugin/duration.js';
 
 dayjs.extend(durationPlugin);
+
+/**
+ * @param {HTMLInputElement} inputFrom
+ * @param {HTMLInputElement} inputTo
+ * @returns {Function}
+ */
+function createCalendars(inputFrom, inputTo) {
+  /**
+   * @type {import('flatpickr/dist/types/options').Options}
+   */
+  const options = {
+    dateFormat: 'Z',
+    altInput: true,
+    altFormat: 'd/m/y H:i',
+    locale: {firstDayOfWeek: 1},
+    enableTime: true,
+    'time_24hr': true
+  };
+
+
+  const calendarFrom = flatpickr(inputFrom, options);
+  const calendarTo = flatpickr(inputTo, options);
+
+  calendarFrom.set('onChange', ([date]) => calendarTo.set('minDate', date));
+  calendarTo.set('minDate', calendarFrom.selectedDates.at(0));
+
+
+  return () => {
+    calendarFrom.destroy();
+    calendarTo.destroy();
+  };
+}
 
 /**
  * @param {dayjs.ConfigType} value
@@ -69,6 +103,7 @@ function html(strings, ...values) {
 }
 
 export {
+  createCalendars,
   formatDate,
   formatTime,
   formatDuration,

@@ -150,8 +150,17 @@ class ListPresenter extends Presenter {
       });
 
       editor.render();
+      return;
     }
 
+    if (input.name === 'event-start-time') {
+      editor.state.dateFrom = input.value;
+      return;
+    }
+
+    if (input.name === 'event-end-time') {
+      editor.state.dateTo = input.value;
+    }
 
   }
 
