@@ -27,9 +27,9 @@ class AppModel extends Model {
      */
     this.filterCallbacks = {
       everything: () => true,
-      future: () => true,
-      present: () => true,
-      past: () => true
+      future: (point) => point.dateFromInMs > Date.now(),
+      present: (point) => point.dateFromInMs <= Date.now() && point.dateToInMs >= Date.now(),
+      past: (point) => point.dateToInMs < Date.now()
     };
 
     /**
