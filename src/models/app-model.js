@@ -23,6 +23,16 @@ class AppModel extends Model {
     this.offerGroups = [];
 
     /**
+     * @type {Record<FilterType, (point: PointModel) => boolean>}
+     */
+    this.filterCallbacks = {
+      everything: () => true,
+      future: () => true,
+      present: () => true,
+      past: () => true
+    };
+
+    /**
      * @type {Record<SortType, (pointA: PointModel, pointB: PointModel) => number>}
      */
     this.sortCallbacks = {
@@ -32,7 +42,6 @@ class AppModel extends Model {
       price: (pointA, pointB) => pointB.basePrice - pointA.basePrice,
       offers: () => 0
     };
-
   }
 
   /**
@@ -50,14 +59,21 @@ class AppModel extends Model {
   }
 
   /**
-   * @param {{sort?: SortType}} options
+   * @param {{
+   *  filter?: FilterType
+   *  sort?: SortType
+   * }} options
+   *
    * @returns {Array<PointModel>}
    */
   getPoints(options = {}) {
+    const defaultFilter = this.filterCallbacks.everything;
     const defaultSort = this.sortCallbacks.day;
+
+    const filter = this.filterCallbacks[options.filter] ?? defaultFilter;
     const sort = this.sortCallbacks[options.sort] ?? defaultSort;
 
-    return this.points.map(this.createPoint).sort(sort);
+    return this.points.map(this.createPoint).filter(filter).sort(sort);
   }
 
   /**
