@@ -18,6 +18,7 @@ class EditorView extends View {
 
     this.addEventListener('click', this.onClick);
     this.addEventListener('change', this.onChange);
+    this.addEventListener('submit', this.onSubmit);
 
   }
 
@@ -311,6 +312,14 @@ class EditorView extends View {
    */
   onChange(event) {
     this.dispatch('edit', event.target);
+  }
+
+  /**
+   * @param {SubmitEvent} event
+   */
+  onSubmit(event) {
+    event.preventDefault();
+    this.dispatch('save');
   }
 
 }
