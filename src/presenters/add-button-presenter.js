@@ -20,7 +20,11 @@ class AddButtonPresenter extends Presenter {
    * @override
    */
   updateView() {
-    this.view.render();
+    const params = this.navigation.getParams();
+
+    this.view.setState({
+      isDisabled: params.edit === 'draft'
+    });
   }
 }
 
