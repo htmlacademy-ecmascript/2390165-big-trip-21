@@ -40,7 +40,8 @@ class PlaceholderPresenter extends Presenter {
     const params = this.navigation.getParams();
     const points = this.model.getPoints(params);
 
-    if (!points.length) {
+
+    if (!points.length && params.edit !== 'draft') {
       return this.messages[params.filter] ?? this.messages.everything;
     }
     return '';
