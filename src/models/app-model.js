@@ -88,6 +88,21 @@ class AppModel extends Model {
    * @param {PointModel} model
    * @returns {Promise<void>}
    */
+  async addPoint(model) {
+    //TODO Добавить данные на сервере
+
+    const data = model.toJSON();
+
+    data.id = crypto.randomUUID();
+
+    this.points.push(data);
+  }
+
+
+  /**
+   * @param {PointModel} model
+   * @returns {Promise<void>}
+   */
   async updatePoint(model) {
     //TODO Обновить данные на сервере
 
