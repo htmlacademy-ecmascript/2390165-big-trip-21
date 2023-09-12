@@ -18,6 +18,7 @@ class ListPresenter extends Presenter {
     this.view.addEventListener('favorite', this.onViewFavorite.bind(this));
     this.view.addEventListener('edit', this.onViewEdit.bind(this));
     this.view.addEventListener('save', this.onViewSave.bind(this));
+    this.view.addEventListener('delete', this.onViewDelete.bind(this));
   }
 
   /**
@@ -213,6 +214,18 @@ class ListPresenter extends Presenter {
     } else {
       await this.model.updatePoint(point);
     }
+    editor.dispatch('close');
+  }
+
+  /**
+   * @param {CustomEvent & {
+   *  target: import('../views/editor-view').default
+   * }} event
+   */
+  async onViewDelete(event) {
+    const editor = event.target;
+
+    await this.model.deletePoint(editor.state.id);
     editor.dispatch('close');
   }
 
