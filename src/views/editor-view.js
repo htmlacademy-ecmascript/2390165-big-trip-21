@@ -183,7 +183,8 @@ class EditorView extends View {
         <input
           class="event__input  event__input--price"
           id="event-price-1"
-          type="text"
+          type="number"
+          min="0"
           name="event-price"
           value="${basePrice}">
       </div>
