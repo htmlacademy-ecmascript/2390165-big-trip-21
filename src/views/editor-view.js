@@ -205,8 +205,16 @@ class EditorView extends View {
    * @returns {string}
    */
   createResetButtonHtml() {
+    const {id} = this.state;
+
+    if (id === 'draft') {
+      return html`
+        <button class="event__reset-btn" type="reset">Cancel</button>
+      `;
+    }
+
     return html`
-      <button class="event__reset-btn" type="reset">Cancel</button>
+      <button class="event__reset-btn" type="reset">Delete</button>
     `;
   }
 
@@ -214,6 +222,12 @@ class EditorView extends View {
    * @returns {string}
    */
   createCloseButtonHtml() {
+    const {id} = this.state;
+
+    if (id === 'draft') {
+      return '';
+    }
+
     return html`
       <button class="event__rollup-btn" type="button">
         <span class="visually-hidden">Close event</span>
