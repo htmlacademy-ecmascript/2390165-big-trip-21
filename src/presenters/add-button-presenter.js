@@ -13,7 +13,7 @@ class AddButtonPresenter extends Presenter {
   constructor(...rest) {
     super(...rest);
 
-    // this.view.addEventListener('change', this.onViewChange.bind(this));
+    this.view.addEventListener('click', this.onViewClick.bind(this));
   }
 
   /**
@@ -24,6 +24,12 @@ class AddButtonPresenter extends Presenter {
 
     this.view.setState({
       isDisabled: params.edit === 'draft'
+    });
+  }
+
+  onViewClick() {
+    this.navigation.setParams({
+      edit: 'draft'
     });
   }
 }
