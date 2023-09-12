@@ -29,6 +29,10 @@ class ListPresenter extends Presenter {
     const destinations = this.model.getDestinations();
     const offerGroups = this.model.getOfferGroups();
 
+    if (params.edit === 'draft') {
+      points.unshift(this.createDraftPoint());
+    }
+
     const items = points.map((point) => {
       const {offers} = offerGroups.find((group) => group.type === point.type);
 
@@ -63,12 +67,27 @@ class ListPresenter extends Presenter {
   }
 
   /**
+   * @returns {import('../models/point-model').default}
+   */
+  createDraftPoint() {
+    const point = this.model.createPoint();
+
+    Object.assign(point, {
+      id: 'draft',
+      type: 'flight',
+      basePrice: 0,
+      isFavorite: false
+    });
+
+    return point;
+  }
+
+  /**
    * @param {import('../views/list-view').ItemState} state
    * @returns {import('../models/point-model').default}
    */
   createPoint(state) {
     const point = this.model.createPoint();
-
 
     Object.assign(point, {
       id: state.id,
