@@ -17,6 +17,8 @@ class ListPresenter extends Presenter {
     this.view.addEventListener('close', this.onViewClose.bind(this));
     this.view.addEventListener('favorite', this.onViewFavorite.bind(this));
     this.view.addEventListener('edit', this.onViewEdit.bind(this));
+    this.view.addEventListener('save', this.onViewSave.bind(this));
+    this.view.addEventListener('delete', this.onViewDelete.bind(this));
   }
 
   /**
@@ -27,6 +29,10 @@ class ListPresenter extends Presenter {
     const points = this.model.getPoints(params);
     const destinations = this.model.getDestinations();
     const offerGroups = this.model.getOfferGroups();
+
+    if (params.edit === 'draft') {
+      points.unshift(this.createDraftPoint());
+    }
 
     const items = points.map((point) => {
       const {offers} = offerGroups.find((group) => group.type === point.type);
@@ -62,12 +68,27 @@ class ListPresenter extends Presenter {
   }
 
   /**
+   * @returns {import('../models/point-model').default}
+   */
+  createDraftPoint() {
+    const point = this.model.createPoint();
+
+    Object.assign(point, {
+      id: 'draft',
+      type: 'flight',
+      basePrice: 0,
+      isFavorite: false
+    });
+
+    return point;
+  }
+
+  /**
    * @param {import('../views/list-view').ItemState} state
    * @returns {import('../models/point-model').default}
    */
   createPoint(state) {
     const point = this.model.createPoint();
-
 
     Object.assign(point, {
       id: state.id,
@@ -160,8 +181,52 @@ class ListPresenter extends Presenter {
 
     if (input.name === 'event-end-time') {
       editor.state.dateTo = input.value;
+      return;
     }
 
+    if (input.name === 'event-price') {
+      editor.state.basePrice = Number(input.value);
+      return;
+    }
+
+    if (input.name === 'event-offer') {
+      editor.state.offers.some((offer) => {
+        if (offer.id === input.value) {
+          offer.isSelected = !offer.isSelected;
+          return true;
+        }
+      });
+    }
+
+  }
+
+  /**
+   * @param {CustomEvent & {
+   *  target: import('../views/editor-view').default
+   * }} event
+   */
+  async onViewSave(event) {
+    const editor = event.target;
+    const point = this.createPoint(editor.state);
+
+    if (editor.state.id === 'draft') {
+      await this.model.addPoint(point);
+    } else {
+      await this.model.updatePoint(point);
+    }
+    editor.dispatch('close');
+  }
+
+  /**
+   * @param {CustomEvent & {
+   *  target: import('../views/editor-view').default
+   * }} event
+   */
+  async onViewDelete(event) {
+    const editor = event.target;
+
+    await this.model.deletePoint(editor.state.id);
+    editor.dispatch('close');
   }
 
 }
