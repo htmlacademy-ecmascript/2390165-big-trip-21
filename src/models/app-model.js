@@ -60,6 +60,8 @@ class AppModel extends Model {
     this.points = points;
     this.destinations = destination;
     this.offerGroups = offerGroups;
+
+    this.dispatch('ready');
   }
 
   /**
