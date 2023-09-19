@@ -209,6 +209,8 @@ class ListPresenter extends Presenter {
     const editor = event.target;
     const point = this.createPoint(editor.state);
 
+    editor.setState({isSaving: true});
+
     if (editor.state.id === 'draft') {
       await this.model.addPoint(point);
     } else {
