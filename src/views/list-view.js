@@ -25,6 +25,8 @@ import EditorView from './editor-view.js';
 *  offers: Array<Selectable<Offer>>
 *  isFavorite: boolean
 *  isEditable: boolean
+*  isSaving?: boolean
+*  isDeleting?: boolean
 * }} ItemState
 *
 * @typedef {{
