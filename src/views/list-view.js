@@ -26,6 +26,7 @@ import EditorView from './editor-view.js';
 *  isFavorite: boolean
 *  isEditable: boolean
 *  isSaving?: boolean
+*  isDeleting?: boolean
 * }} ItemState
 *
 * @typedef {{

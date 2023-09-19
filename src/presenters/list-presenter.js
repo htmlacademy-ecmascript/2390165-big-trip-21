@@ -227,6 +227,7 @@ class ListPresenter extends Presenter {
   async onViewDelete(event) {
     const editor = event.target;
 
+    editor.setState({isDeleting: true});
     await this.model.deletePoint(editor.state.id);
     editor.dispatch('close');
   }
