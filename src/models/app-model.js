@@ -102,11 +102,7 @@ class AppModel extends Model {
    * @returns {Promise<void>}
    */
   async addPoint(model) {
-    //TODO Добавить данные на сервере
-
-    const data = model.toJSON();
-
-    data.id = crypto.randomUUID();
+    const data = await this.apiService.addPoint(model.toJSON());
 
     this.points.push(data);
   }

@@ -91,7 +91,7 @@ class ListPresenter extends Presenter {
     const point = this.model.createPoint();
 
     Object.assign(point, {
-      id: state.id,
+      id: (state.id === 'draft') ? undefined : state.id,
       type: state.types.find((type) => type.isSelected).value,
       destinationId: state.destinations.find((destination) => destination.isSelected)?.id,
       dateFrom: state.dateFrom,
