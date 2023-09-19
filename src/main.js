@@ -4,6 +4,7 @@ import './views/add-button-view.js';
 import './views/sort-view.js';
 import './views/list-view.js';
 import './views/placeholder-view.js';
+import './views/ui-blocker-view.js';
 
 import ApiService from './services/api-service.js';
 import AppModel from './models/app-model.js';
