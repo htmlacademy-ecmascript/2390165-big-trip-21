@@ -134,9 +134,14 @@ class ListPresenter extends Presenter {
   async onViewFavorite(event) {
     const card = event.target;
 
-    card.state.isFavorite = !card.state.isFavorite;
-    await this.model.updatePoint(this.createPoint(card.state));
-    card.render();
+    try {
+      card.state.isFavorite = !card.state.isFavorite;
+      await this.model.updatePoint(this.createPoint(card.state));
+      card.render();
+
+    } catch {
+      card.shake();
+    }
   }
 
   /**
@@ -209,14 +214,21 @@ class ListPresenter extends Presenter {
     const editor = event.target;
     const point = this.createPoint(editor.state);
 
-    editor.setState({isSaving: true});
+    try {
+      editor.setState({isSaving: true});
 
-    if (editor.state.id === 'draft') {
-      await this.model.addPoint(point);
-    } else {
-      await this.model.updatePoint(point);
+      if (editor.state.id === 'draft') {
+        await this.model.addPoint(point);
+      } else {
+        await this.model.updatePoint(point);
+      }
+      editor.dispatch('close');
+
+    } catch {
+      editor.setState({isSaving: false});
+      editor.shake();
     }
-    editor.dispatch('close');
+
   }
 
   /**
@@ -227,9 +239,15 @@ class ListPresenter extends Presenter {
   async onViewDelete(event) {
     const editor = event.target;
 
-    editor.setState({isDeleting: true});
-    await this.model.deletePoint(editor.state.id);
-    editor.dispatch('close');
+    try {
+      editor.setState({isDeleting: true});
+      await this.model.deletePoint(editor.state.id);
+      editor.dispatch('close');
+
+    } catch {
+      editor.setState({isDeleting: false});
+      editor.shake();
+    }
   }
 
 }
