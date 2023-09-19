@@ -124,8 +124,7 @@ class AppModel extends Model {
    * @returns {Promise<void>}
    */
   async deletePoint(id) {
-    //TODO Удалить данные на сервере
-
+    await this.apiService.deletePoint(id);
     const index = this.points.findIndex((point) => point.id === id);
 
     this.points.splice(index, 1);
