@@ -15,6 +15,7 @@ import AddButtonPresenter from './presenters/add-button-presenter.js';
 import SortPresenter from './presenters/sort-presenter.js';
 import ListPresenter from './presenters/list-presenter.js';
 import PlaceholderPresenter from './presenters/placeholder-presenter.js';
+import UiBlockerPresenter from './presenters/ui-blocker-presenter.js';
 
 const apiService = new ApiService({authorization: 'Basic xcvqwe123'});
 const appModel = new AppModel(apiService);
@@ -27,5 +28,6 @@ appModel.ready().then(() => {
   new AddButtonPresenter(document.querySelector('add-button-view'), appModel);
   new SortPresenter(document.querySelector('sort-view'), appModel);
   new ListPresenter(document.querySelector('list-view'), appModel);
+  new UiBlockerPresenter(document.querySelector('ui-blocker-view'), appModel);
 });
 
