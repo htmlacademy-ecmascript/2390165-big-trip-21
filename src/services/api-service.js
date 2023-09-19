@@ -38,6 +38,20 @@ class ApiService extends Service {
   }
 
   /**
+   * @param {Point} data
+   * @returns {Promise<Point>}
+   */
+  async updatePoint(data) {
+    const response = await this.request(`points/${data.id}`, {
+      method: 'put',
+      headers: {'content-type': 'application/json'},
+      body: JSON.stringify(data)
+    });
+
+    return sanitize(await response.json());
+  }
+
+  /**
    * @returns {Promise<Array<Destination>>}
    */
   async getDestinations() {
