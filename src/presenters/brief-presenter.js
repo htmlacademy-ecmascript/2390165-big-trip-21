@@ -24,6 +24,7 @@ class BriefPresenter extends Presenter {
       destinationNames: this.getDestinationNames(),
       dateFrom: this.getDateFrom(),
       dateTo: this.getDateTo(),
+      totalCost: this.getTotalCost()
     });
   }
 
@@ -63,6 +64,27 @@ class BriefPresenter extends Presenter {
     const points = this.model.getPoints();
 
     return points.at(-1)?.dateTo;
+  }
+
+  /**
+   * @return {number}
+   */
+  getTotalCost() {
+    const points = this.model.getPoints();
+    const offerGroups = this.model.getOfferGroups();
+
+    return points.reduce((totalCost, point) => {
+      const {offers} = offerGroups.find((group) => group.type === point.type);
+
+      const pointCost = offers.reduce((cost, offer) => {
+        if (point.offerIds.includes(offer.id)) {
+          return cost + offer.price;
+        }
+        return cost;
+      }, point.basePrice);
+
+      return totalCost + pointCost;
+    }, 0);
   }
 
 }
