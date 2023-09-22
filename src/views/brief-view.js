@@ -1,6 +1,16 @@
 import View from './view.js';
-import {html} from '../utilities.js';
+import {formatDateRange, formatList, formatNumber, html} from '../utilities.js';
 
+/**
+ * @typedef {{
+ *  destinationNames: Array<string>
+ *  dateFrom: string
+ *  dateTo: string
+ *  totalCost: number
+ * }} State
+ *
+ * @extends {View<State>}
+ */
 class BriefView extends View {
   constructor() {
     super();
@@ -12,15 +22,21 @@ class BriefView extends View {
    * @override
    */
   createHtml() {
+    const {destinationNames = [], dateFrom, dateTo, totalCost = 0} = this.state;
+
+    if (!destinationNames.length) {
+      return '';
+    }
+
     return html`
       <div class="trip-info__main">
-        <h1 class="trip-info__title">Amsterdam — Chamonix — Geneva</h1>
+        <h1 class="trip-info__title">${formatList(destinationNames)}</h1>
 
-        <p class="trip-info__dates">Mar 18&nbsp;—&nbsp;20</p>
+        <p class="trip-info__dates">${formatDateRange(dateFrom, dateTo)}</p>
       </div>
 
       <p class="trip-info__cost">
-        Total: €&nbsp;<span class="trip-info__cost-value">1230</span>
+        Total: €&nbsp;<span class="trip-info__cost-value">${formatNumber(totalCost)}</span>
       </p>
     `;
   }
