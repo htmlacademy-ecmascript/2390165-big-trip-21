@@ -13,7 +13,7 @@ class BriefPresenter extends Presenter {
   constructor(...rest) {
     super(...rest);
 
-    // this.view.addEventListener('change', this.onViewChange.bind(this));
+    this.model.addEventListener('idle', this.onModelIdle.bind(this));
   }
 
   /**
@@ -87,6 +87,15 @@ class BriefPresenter extends Presenter {
     }, 0);
   }
 
+  /**
+   * @override
+   */
+  onNavigationChange() {}
+
+
+  onModelIdle() {
+    this.updateView();
+  }
 }
 
 export default BriefPresenter;
