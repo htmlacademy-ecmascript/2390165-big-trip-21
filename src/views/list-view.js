@@ -39,7 +39,7 @@ class ListView extends View {
   constructor() {
     super();
 
-    this.classList.add('trip-list');
+    this.classList.add('trip-events__list');
     this.setAttribute('role', 'list');
   }
 
@@ -50,7 +50,7 @@ class ListView extends View {
     const views = this.state.items.map((item) => {
       const view = item.isEditable ? new EditorView() : new CardView();
 
-      view.classList.add('trip-list__item');
+      view.classList.add('trip-events__item');
       view.setAttribute('role', 'listitem');
       view.setState(item);
 
