@@ -61,6 +61,45 @@ class View extends HTMLElement {
       ...options
     });
   }
+
+  /**
+   * @param {KeyframeAnimationOptions} [options]
+   * @param {PropertyIndexedKeyframes} [extraKeyframes]
+   * @returns {Animation}
+   */
+  fadeIn(options, extraKeyframes) {
+    const keyframes = {
+      opacity: [0, 1],
+      ...extraKeyframes
+    };
+
+    return this.animate(keyframes, {
+      duration: 300,
+      easing: 'ease',
+      fill: 'both',
+      ...options
+    });
+  }
+
+  /**
+   * @param {KeyframeAnimationOptions} [options]
+   * @returns {Animation}
+   */
+  fadeInLeft(options) {
+    return this.fadeIn(options, {
+      translate: ['40px 0', '0 0']
+    });
+  }
+
+  /**
+   * @param {KeyframeAnimationOptions} [options]
+   * @returns {Animation}
+   */
+  fadeInRight(options) {
+    return this.fadeIn(options, {
+      translate: ['-40px 0', '0 0']
+    });
+  }
 }
 
 export default View;
