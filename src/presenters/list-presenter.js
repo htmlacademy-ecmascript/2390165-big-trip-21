@@ -62,7 +62,8 @@ class ListPresenter extends Presenter {
         })),
 
         isFavorite: point.isFavorite,
-        isEditable: params.edit === point.id
+        isEditable: params.edit === point.id,
+        isAnimated: params.edit === point.id || previousParams.edit === point.id
       };
     });
 
