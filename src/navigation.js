@@ -26,7 +26,7 @@ class Navigation extends EventTarget {
       url.searchParams.set(key, params[key]);
     });
 
-    window.history.pushState(null, '', url.href);
+    window.history.pushState(this.getParams(), '', url.href);
     this.dispatchEvent(new Event('change'));
   }
 
@@ -37,6 +37,13 @@ class Navigation extends EventTarget {
     const url = this.getUrl();
 
     return Object.fromEntries(url.searchParams);
+  }
+
+  /**
+   * @returns {Params}
+   */
+  getPreviousParams() {
+    return window.history.state ?? {};
   }
 
   /**

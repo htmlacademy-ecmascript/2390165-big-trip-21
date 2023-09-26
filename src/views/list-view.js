@@ -31,6 +31,7 @@ import EditorView from './editor-view.js';
 *
 * @typedef {{
 *  items: Array<ItemState>
+*  isAnimated: boolean
 * }} State
 *
 * @extends {View<State>}
@@ -47,13 +48,18 @@ class ListView extends View {
    * @override
    */
   render() {
-    const views = this.state.items.map((item, index) => {
+    const {isAnimated, items} = this.state;
+
+    const views = items.map((item, index) => {
       const view = item.isEditable ? new EditorView() : new CardView();
 
       view.classList.add('trip-events__item');
       view.setAttribute('role', 'listitem');
       view.setState(item);
-      view.fadeInLeft({delay: index * 100});
+
+      if (isAnimated) {
+        view.fadeInLeft({delay: index * 100});
+      }
 
       return view;
     });
